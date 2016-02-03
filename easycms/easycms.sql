@@ -29,11 +29,26 @@ CREATE TABLE `t_channel` (
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `state` tinyint(4) DEFAULT '1' COMMENT '状态；1：正常，9：删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_channel` */
 
-insert  into `t_channel`(`id`,`pid`,`site_id`,`name`,`path`,`create_time`,`state`) values (1,0,0,'书记','/sj','2016-02-02 18:34:12',1);
+insert  into `t_channel`(`id`,`pid`,`site_id`,`name`,`path`,`create_time`,`state`) values (1,0,0,'书记','/sj','2016-02-02 18:34:12',1),(2,0,0,'书记','/sj','2016-02-03 11:18:25',1),(3,0,0,'书记','/sj','2016-02-03 14:41:49',1),(4,0,0,'书记','/sj','2016-02-03 14:43:29',1),(5,0,0,'书记','/sj','2016-02-03 14:43:57',1);
+
+/*Table structure for table `t_menu` */
+
+DROP TABLE IF EXISTS `t_menu`;
+
+CREATE TABLE `t_menu` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `pid` int(11) NOT NULL COMMENT '父菜单，0表示顶级菜单',
+  `text` varchar(100) NOT NULL COMMENT '菜单名',
+  `action` varchar(100) DEFAULT NULL COMMENT '菜单链接，0表示无链接',
+  `state` tinyint(4) DEFAULT NULL COMMENT '状态，1：正常，9：删除',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `t_menu` */
 
 /*Table structure for table `t_site` */
 
