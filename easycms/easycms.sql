@@ -1,6 +1,6 @@
 /*
-SQLyog Ultimate v11.11 (64 bit)
-MySQL - 5.5.47 : Database - easycms
+SQLyog Professional v12.08 (64 bit)
+MySQL - 5.5.45 : Database - easycms
 *********************************************************************
 */
 
@@ -46,9 +46,11 @@ CREATE TABLE `t_dict` (
   `value` varchar(10) DEFAULT NULL COMMENT '值',
   `desc` varchar(100) DEFAULT NULL COMMENT '描述',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_dict` */
+
+insert  into `t_dict`(`id`,`catalog_code`,`key`,`value`,`desc`) values (1,'state','valid','1','有效状态');
 
 /*Table structure for table `t_menu` */
 
@@ -59,11 +61,14 @@ CREATE TABLE `t_menu` (
   `pid` int(11) NOT NULL COMMENT '父菜单，0表示顶级菜单',
   `text` varchar(100) NOT NULL COMMENT '菜单名',
   `action` varchar(100) DEFAULT NULL COMMENT '菜单链接，0表示无链接',
+  `sort` tinyint(4) DEFAULT NULL COMMENT '排序字段',
   `state` tinyint(4) DEFAULT NULL COMMENT '状态，1：正常，9：删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_menu` */
+
+insert  into `t_menu`(`id`,`pid`,`text`,`action`,`sort`,`state`) values (1,0,'系统设置','0',NULL,1),(2,1,'菜单管理',NULL,NULL,1);
 
 /*Table structure for table `t_site` */
 
