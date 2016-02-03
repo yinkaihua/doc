@@ -35,6 +35,21 @@ CREATE TABLE `t_channel` (
 
 insert  into `t_channel`(`id`,`pid`,`site_id`,`name`,`path`,`create_time`,`state`) values (1,0,0,'书记','/sj','2016-02-02 18:34:12',1),(2,0,0,'书记','/sj','2016-02-03 11:18:25',1),(3,0,0,'书记','/sj','2016-02-03 14:41:49',1),(4,0,0,'书记','/sj','2016-02-03 14:43:29',1),(5,0,0,'书记','/sj','2016-02-03 14:43:57',1);
 
+/*Table structure for table `t_dict` */
+
+DROP TABLE IF EXISTS `t_dict`;
+
+CREATE TABLE `t_dict` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `catalog_code` varchar(10) NOT NULL COMMENT '分类code',
+  `key` varchar(10) DEFAULT NULL COMMENT '键',
+  `value` varchar(10) DEFAULT NULL COMMENT '值',
+  `desc` varchar(100) DEFAULT NULL COMMENT '描述',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `t_dict` */
+
 /*Table structure for table `t_menu` */
 
 DROP TABLE IF EXISTS `t_menu`;
