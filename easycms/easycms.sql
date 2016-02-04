@@ -1,6 +1,6 @@
 /*
-SQLyog Professional v12.08 (64 bit)
-MySQL - 5.5.45 : Database - easycms
+SQLyog Ultimate v11.11 (64 bit)
+MySQL - 5.5.47 : Database - easycms
 *********************************************************************
 */
 
@@ -59,6 +59,7 @@ DROP TABLE IF EXISTS `t_menu`;
 CREATE TABLE `t_menu` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `pid` int(11) NOT NULL COMMENT '父菜单，0表示顶级菜单',
+  `level` int(11) NOT NULL DEFAULT '1' COMMENT '菜单级别',
   `text` varchar(100) NOT NULL COMMENT '菜单名',
   `action` varchar(100) DEFAULT NULL COMMENT '菜单链接，0表示无链接',
   `sort` tinyint(4) DEFAULT NULL COMMENT '排序字段',
@@ -68,7 +69,7 @@ CREATE TABLE `t_menu` (
 
 /*Data for the table `t_menu` */
 
-insert  into `t_menu`(`id`,`pid`,`text`,`action`,`sort`,`state`) values (1,0,'系统设置','0',NULL,1),(2,1,'菜单管理',NULL,NULL,1);
+insert  into `t_menu`(`id`,`pid`,`level`,`text`,`action`,`sort`,`state`) values (1,0,1,'系统设置','0',NULL,1),(2,1,2,'菜单管理','/menu/view',NULL,1);
 
 /*Table structure for table `t_site` */
 
