@@ -27,13 +27,15 @@ CREATE TABLE `t_channel` (
   `name` varchar(100) DEFAULT NULL COMMENT '显示名称',
   `path` varchar(100) DEFAULT NULL COMMENT '访问路径',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `level` tinyint(4) DEFAULT NULL COMMENT '栏目级别',
+  `sort` tinyint(4) DEFAULT NULL COMMENT '排序',
   `state` tinyint(4) DEFAULT '1' COMMENT '状态；1：正常，9：删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_channel` */
 
-insert  into `t_channel`(`id`,`pid`,`site_id`,`name`,`path`,`create_time`,`state`) values (1,0,0,'书记','/sj','2016-02-02 18:34:12',1),(2,0,0,'书记','/sj','2016-02-03 11:18:25',1),(3,0,0,'书记','/sj','2016-02-03 14:41:49',1),(4,0,0,'书记','/sj','2016-02-03 14:43:29',1),(5,0,0,'书记','/sj','2016-02-03 14:43:57',1);
+insert  into `t_channel`(`id`,`pid`,`site_id`,`name`,`path`,`create_time`,`level`,`sort`,`state`) values (9,0,7,'Bootstrap','/bootstrap',NULL,1,1,1),(10,0,7,'Python','/python',NULL,1,2,1);
 
 /*Table structure for table `t_dict` */
 
@@ -45,12 +47,13 @@ CREATE TABLE `t_dict` (
   `key` varchar(10) DEFAULT NULL COMMENT '键',
   `value` varchar(10) DEFAULT NULL COMMENT '值',
   `desc` varchar(100) DEFAULT NULL COMMENT '描述',
+  `sort` int(11) DEFAULT NULL COMMENT '排序字段',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_dict` */
 
-insert  into `t_dict`(`id`,`catalog_code`,`key`,`value`,`desc`) values (1,'state','valid','1','有效状态');
+insert  into `t_dict`(`id`,`catalog_code`,`key`,`value`,`desc`,`sort`) values (1,'state','valid','1','正常',1),(2,'state','invalid','9','无效',2);
 
 /*Table structure for table `t_menu` */
 
@@ -65,11 +68,11 @@ CREATE TABLE `t_menu` (
   `sort` tinyint(4) DEFAULT NULL COMMENT '排序字段',
   `state` tinyint(4) DEFAULT NULL COMMENT '状态，1：正常，9：删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_menu` */
 
-insert  into `t_menu`(`id`,`pid`,`level`,`text`,`action`,`sort`,`state`) values (1,0,1,'系统设置','0',NULL,1),(2,1,2,'菜单管理','/menu/view',NULL,1);
+insert  into `t_menu`(`id`,`pid`,`level`,`text`,`action`,`sort`,`state`) values (1,0,1,'系统设置','0',1,1),(2,1,2,'菜单管理','menu/view',1,1),(19,0,1,'网站维护','0',2,1),(20,19,2,'站点管理','site/view',1,1),(21,19,2,'栏目管理','channel/view',2,1),(23,0,1,'内容管理','0',3,1),(24,23,2,'文章','article/view',1,1),(29,23,2,'活动','a',2,1),(30,23,2,'推荐','a',3,1),(31,1,2,'字典','dict/view',2,1);
 
 /*Table structure for table `t_site` */
 
@@ -79,14 +82,17 @@ CREATE TABLE `t_site` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `domain` varchar(100) NOT NULL COMMENT '访问域名',
   `name` varchar(100) DEFAULT NULL COMMENT '站点名称',
+  `path` varchar(100) DEFAULT NULL COMMENT '访问路径',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `account` int(11) DEFAULT NULL COMMENT '创建人ID',
   `account_name` varchar(100) DEFAULT NULL COMMENT '创建人姓名',
   `state` tinyint(4) DEFAULT NULL COMMENT '状态；1：正常，9：删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_site` */
+
+insert  into `t_site`(`id`,`domain`,`name`,`path`,`create_time`,`account`,`account_name`,`state`) values (7,'www.coding17.com','一起来coding','coding17','2016-02-15 15:06:47',1000,'admin',1);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
