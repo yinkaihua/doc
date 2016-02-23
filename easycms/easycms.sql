@@ -37,6 +37,44 @@ CREATE TABLE `t_channel` (
 
 insert  into `t_channel`(`id`,`pid`,`site_id`,`name`,`path`,`create_time`,`level`,`sort`,`state`) values (9,0,7,'Bootstrap','/bootstrap',NULL,1,1,1),(10,0,7,'Python','/python',NULL,1,2,1);
 
+/*Table structure for table `t_channel_content` */
+
+DROP TABLE IF EXISTS `t_channel_content`;
+
+CREATE TABLE `t_channel_content` (
+  `channel_id` int(11) DEFAULT NULL COMMENT '栏目ID',
+  `content_id` int(11) DEFAULT NULL COMMENT '文章ID'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `t_channel_content` */
+
+/*Table structure for table `t_content` */
+
+DROP TABLE IF EXISTS `t_content`;
+
+CREATE TABLE `t_content` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '文章ID',
+  `title` varchar(100) DEFAULT NULL COMMENT '标题',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `pub_state` tinyint(4) DEFAULT NULL COMMENT '发布状态 1：发布；2：未发布',
+  `state` tinyint(4) DEFAULT NULL COMMENT '状态；1：正常，9：删除',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `t_content` */
+
+/*Table structure for table `t_content_ext` */
+
+DROP TABLE IF EXISTS `t_content_ext`;
+
+CREATE TABLE `t_content_ext` (
+  `content_id` int(11) NOT NULL COMMENT '文章ID',
+  `txt` text COMMENT '文章内容',
+  PRIMARY KEY (`content_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `t_content_ext` */
+
 /*Table structure for table `t_dict` */
 
 DROP TABLE IF EXISTS `t_dict`;
@@ -49,7 +87,7 @@ CREATE TABLE `t_dict` (
   `desc` varchar(100) DEFAULT NULL COMMENT '描述',
   `sort` int(11) DEFAULT NULL COMMENT '排序字段',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_dict` */
 
